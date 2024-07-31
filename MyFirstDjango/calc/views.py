@@ -12,3 +12,6 @@ def add(request):
 def dashboard(request):
     return render(request,'dashboard.html')
 
+def product(request):
+    return render(request, 'product.html')
+
