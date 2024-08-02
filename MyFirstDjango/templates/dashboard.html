@@ -2,8 +2,28 @@
 
 {% block content %}
 
-<h1>This is the Dashboard section</h1>
-<a href="{% url 'home' %}"><button type="button" class="btn btn-success">Home Window</button></a>
+    <h1 style="text-align: center;">This is the Dashboard section</h1>
+
+    <table class="table">
+        
+       
+        <tr>
+            <th>ID</th>
+            {% comment %} <th>URL</th> {% endcomment %}
+            <th>Date</th>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        {% for customer in customers %}
+            <tr>
+                <td>{{customer.id}}</td>
+                {% comment %} <td><a href="{% url 'customer' customer.id %}">View</a></td> {% endcomment %}
+                <td>{{customer.date}}</td>
+                <td>{{customer.name}}</td>
+                <td>{{customer.age}}</td>
+            </tr>
+        {% endfor %}
+    </table>
 
 {% endblock %}
 

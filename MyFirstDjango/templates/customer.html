@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Customer Name: {{cust}}</h1>
+    
+    &nbsp;
+
+    <table class="table">
+        {% for i in orders %}
+        <h1>Orders - {{i.product}}</h1>
+        <h1>Status - {{i.status}} </h1>
+        {% endfor %}
+    </table>
+
+{% endblock %}

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import *
 
 # Create your views here.
 def home(request):
@@ -10,8 +11,17 @@ def add(request):
     return render(request,'results.html',{'result':val3})
 
 def dashboard(request):
-    return render(request,'dashboard.html')
+    customers = Customer.objects.all()
+    return render(request,'dashboard.html', {'customers': customers})
 
 def product(request):
-    return render(request, 'product.html')
+    products = Product.objects.all()
+    return render(request, 'product.html', {'products': products})
 
+def customer(request, no):
+    customer=Customer.objects.get(id=no)
+    customers=Customer.objects.all()
+    orders=customer.order_set.all()
+    order_count=orders.count()
+    context={'customers':customers, 'cust':customer,'orders':orders,'ordcount':order_count}
+    return render(request,'customer.html',context)
